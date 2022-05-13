@@ -8,9 +8,15 @@ public class Player : MonoBehaviour
 
     [SerializeField] float moveSpeed = 10f;
 
+    [SerializeField] float accelerationTime = 3f;
+    [SerializeField] float decelerationTime = 3f;
+
+    [SerializeField] float moveRotationAngle = 50f;
+
     [SerializeField] float paddingX = 0.2f;
     [SerializeField] float paddingY = 0.2f;
    new  Rigidbody2D rigidbody;
+    Coroutine moveCoroutine;
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -39,15 +45,33 @@ public class Player : MonoBehaviour
     }
     private void Move(Vector2 _moveInput)
     {
-        Vector2 _moveAmount = _moveInput * moveSpeed;
-        rigidbody.velocity = _moveAmount;
+        if(moveCoroutine!=null)
+        StopCoroutine(moveCoroutine);
+
+        Quaternion _moveRotation = Quaternion.AngleAxis(moveRotationAngle * _moveInput.y, Vector3.right);
+
+        moveCoroutine =StartCoroutine(MoveCo( accelerationTime,_moveInput.normalized * moveSpeed,_moveRotation));
         StartCoroutine(MovePositionLimitCo());
     }
     void StopMove()
     {
-        rigidbody.velocity = Vector2.zero;
+        if (moveCoroutine != null)
+            StopCoroutine(moveCoroutine);
+        StartCoroutine(MoveCo(decelerationTime,Vector2.zero,Quaternion.identity));
         StopCoroutine(MovePositionLimitCo());
     }
+    IEnumerator MoveCo(float _time, Vector2 _moveVelocity,Quaternion _moveRotation)
+    {
+        float _t = 0;
+        while(_t < _time)
+        {
+            _t += Time.fixedDeltaTime / _time;
+          rigidbody.velocity =  Vector2.Lerp(rigidbody.velocity, _moveVelocity, _t / _time);
+          transform.rotation=  Quaternion.Lerp(transform.rotation, _moveRotation, _t / _time);
+            yield return null;
+        }
+    }
+  
     IEnumerator MovePositionLimitCo()
     {
         while (true)

@@ -659,7 +659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6435389010079767248, guid: 69bf9c8dfe6a9e5479d5093236b17108, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.155
       objectReference: {fileID: 0}
     - target: {fileID: 6435389010079767248, guid: 69bf9c8dfe6a9e5479d5093236b17108, type: 3}
       propertyPath: m_LocalRotation.w
@@ -708,6 +708,18 @@ PrefabInstance:
     - target: {fileID: 8579891241621635518, guid: 69bf9c8dfe6a9e5479d5093236b17108, type: 3}
       propertyPath: moveSpeed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579891241621635518, guid: 69bf9c8dfe6a9e5479d5093236b17108, type: 3}
+      propertyPath: accelerationTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579891241621635518, guid: 69bf9c8dfe6a9e5479d5093236b17108, type: 3}
+      propertyPath: decelerationTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579891241621635518, guid: 69bf9c8dfe6a9e5479d5093236b17108, type: 3}
+      propertyPath: moveRotationAngle
+      value: 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69bf9c8dfe6a9e5479d5093236b17108, type: 3}
