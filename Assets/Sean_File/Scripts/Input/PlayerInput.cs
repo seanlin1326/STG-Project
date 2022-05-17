@@ -8,8 +8,12 @@ namespace Sean
     [CreateAssetMenu(fileName = "Player Input")]
     public class PlayerInput : ScriptableObject, InputActions.IGamePlayActions
     {
+        //Move
         public event UnityAction<Vector2> onMove;
         public event UnityAction onStopMove;
+        //Fire
+        public event UnityAction onFire;
+        public event UnityAction onStopFire;
         InputActions inputActions;
 
         private void OnEnable()
@@ -54,6 +58,18 @@ namespace Sean
         void Update()
         {
 
+        }
+
+        public void OnFire(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                onFire?.Invoke();
+            }
+            if (context.phase == InputActionPhase.Canceled)
+            {
+                onStopFire?.Invoke();
+            }
         }
     }
 }
