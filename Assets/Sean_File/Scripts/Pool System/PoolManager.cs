@@ -5,22 +5,25 @@ namespace Sean
 {
     public class PoolManager : MonoBehaviour
     {
-        [SerializeField] Pool[] playerProjectilePools;
-
+        [SerializeField] List<Pool> playerProjectilePools=new List<Pool>();
+        [SerializeField] List<Pool> enemyProjectilePools = new List<Pool>();
       static Dictionary<GameObject, Pool> dictionary;
         // Start is called before the first frame update
         void Start()
         {
+         
             dictionary = new Dictionary<GameObject, Pool>();
             Initialize(playerProjectilePools);
+            Initialize(enemyProjectilePools);
         }
         private void OnDestroy()
         {
          #if UNITY_EDITOR
             CheckPoolSize(playerProjectilePools);
+            CheckPoolSize(enemyProjectilePools);
          #endif
         }
-        void CheckPoolSize(Pool[] _pools)
+        void CheckPoolSize(List<Pool> _pools)
         {
             foreach (var _pool in _pools)
             {
@@ -34,17 +37,16 @@ namespace Sean
                 }
             }
         }
-        void Initialize(Pool[] _pools)
+        void Initialize(List<Pool> _pools)
         {
             foreach (var _pool in  _pools)
             {
-#if UNITY_EDITOR
+
                 if (dictionary.ContainsKey(_pool.Prefab))
                 {
                     Debug.LogError("Same prefab in multiple pool! "+_pool.Prefab.name);
                     continue;
                 }
-#endif
                 dictionary.Add(_pool.Prefab, _pool);
              Transform _poolParent = new GameObject("Pool: " + _pool.Prefab.name).transform;
                 _poolParent.parent = transform;

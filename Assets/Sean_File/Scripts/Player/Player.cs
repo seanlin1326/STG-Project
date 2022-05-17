@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Sean
 {
-    public class Player : MonoBehaviour
+    public class Player : Charactor
     {
-        [SerializeField] PlayerInput input;
+       [SerializeField] bool regenerateHealth = true;
+        [SerializeField] float healthGenerateTime;
+        [SerializeField,Range(0f,1f)] float healthGeneratePercent;
 
+        [Header("--- Input ---")]
+        [SerializeField] PlayerInput input;
+        [Header("--- Move ---")]
         [SerializeField] float moveSpeed = 10f;
 
         [SerializeField] float accelerationTime = 0.2f;
@@ -30,12 +35,15 @@ namespace Sean
         [SerializeField] float fireInterval=0.2f;
         new Rigidbody2D rigidbody;
         Coroutine moveCoroutine;
+        Coroutine healthGenerateCoroutine;
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody2D>();
         }
-        private void OnEnable()
+
+        protected override void OnEnable()
         {
+            base.OnEnable();
             input.onMove += Move;
             input.onStopMove += StopMove;
             input.onFire += Fire;
@@ -51,10 +59,24 @@ namespace Sean
         // Start is called before the first frame update
         void Start()
         {
+           
             rigidbody.gravityScale = 0;
             input.EnableGamePlayInput();
+           
         }
-
+        public override void TakeDamage(float _damage)
+        {
+            base.TakeDamage(_damage);
+            if (gameObject.activeSelf)
+            {
+                if (regenerateHealth)
+                {
+                    if (healthGenerateCoroutine != null)
+                        StopCoroutine(healthGenerateCoroutine);
+                    healthGenerateCoroutine = StartCoroutine(HealthRegenerateCo(healthGenerateTime,healthGeneratePercent));
+                }
+            }
+        }
         // Update is called once per frame
         void Update()
         {

@@ -38,11 +38,11 @@ namespace Sean
         }
         public void OnMove(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Performed)
+            if (context.performed)
             {
                 onMove?.Invoke(context.ReadValue<Vector2>());
             }
-            if (context.phase == InputActionPhase.Canceled)
+            if (context.canceled)
             {
                 onStopMove?.Invoke();
             }
@@ -62,11 +62,11 @@ namespace Sean
 
         public void OnFire(InputAction.CallbackContext context)
         {
-            if (context.phase == InputActionPhase.Performed)
+            if (context.performed)
             {
                 onFire?.Invoke();
             }
-            if (context.phase == InputActionPhase.Canceled)
+            if (context.canceled)
             {
                 onStopFire?.Invoke();
             }

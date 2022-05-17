@@ -5,8 +5,8 @@ namespace Sean
 {
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] float moveSpeed = 10f;
-        [SerializeField] Vector2 moveDirection;
+        [SerializeField]protected float moveSpeed = 10f;
+        [SerializeField]protected Vector2 moveDirection;
 
         IEnumerator MoveDirectlyCo()
         {
@@ -16,7 +16,7 @@ namespace Sean
                 yield return null;
             }
         }
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             StartCoroutine(MoveDirectlyCo());
         }

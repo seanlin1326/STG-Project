@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+namespace Sean
+{
+    public class Charactor : MonoBehaviour
+    {
+        [SerializeField] GameObject deathVFX;
+        [Header("---Health---")]
+        [SerializeField] protected float maxHealth = 1;
+
+        [SerializeField]protected float health = 1;
+
+        protected virtual void OnEnable()
+        {
+            health = maxHealth;
+        }
+        public virtual void TakeDamage(float _damage)
+        {
+            health -= _damage;
+            if (health <= 0f)
+            {
+                Die();
+            }
+        }
+        public virtual void Die()
+        {
+            health = 0f;
+            PoolManager.Release(deathVFX,transform.position);
+            gameObject.SetActive(false);
+        }
+        public virtual void RestoreHealth(float _value)
+        {
+            if (health == maxHealth) return;
+            health = Mathf.Clamp(health+_value, 0, maxHealth);
+        }
+        protected IEnumerator HealthRegenerateCo(float _waitTime,float _percent)
+        {
+            while(health < maxHealth)
+            {
+                yield return new WaitForSeconds(_waitTime);
+                RestoreHealth(maxHealth * _percent);
+            }
+        }
+        protected IEnumerator DamageOverTimeCo(float _waitTime, float _percent)
+        {
+            while (health > 0)
+            {
+                yield return new WaitForSeconds(_waitTime);
+                TakeDamage(maxHealth * _percent);
+            }
+        }
+    }
+}

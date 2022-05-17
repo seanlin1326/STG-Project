@@ -10,7 +10,9 @@ protected virtual void Awake()
         if (Instance != null)
             Destroy(this);
         else
+        {
+            
             Instance = this as T;
-
+        }
     }
 }

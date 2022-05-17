@@ -14477,7 +14477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818955864466597656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87, y: 0.2, z: 0}
+  m_LocalPosition: {x: 1, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8236874700052467700}
@@ -14507,7 +14507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3098575307456224432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8236874700052467700}
@@ -33864,7 +33864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6410890458538044609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87, y: -0.2, z: 0}
+  m_LocalPosition: {x: 1, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8236874700052467700}
@@ -33919,6 +33919,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb28c1dd0fc66a841baa9c9d47ee2baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathVFX: {fileID: 0}
+  maxHealth: 100
+  health: 1
+  regenerateHealth: 1
+  healthGenerateTime: 12
+  healthGeneratePercent: 0.02
   input: {fileID: 11400000, guid: 6d12f230b1392944fa79079f18a16982, type: 2}
   moveSpeed: 6
   accelerationTime: 0.2
@@ -33929,10 +33935,10 @@ MonoBehaviour:
   projectile1: {fileID: 7653462834797500399, guid: 76985e3f8adfa3045a0877b28813f733, type: 3}
   projectile2: {fileID: 7653462834797500399, guid: 942f17a15b7de3642966483fe0819bbe, type: 3}
   projectile3: {fileID: 7653462834797500399, guid: 842fa19cfb2f5694bbca1f5bdcc04503, type: 3}
-  muzzleTop: {fileID: 0}
-  muzzleMiddle: {fileID: 0}
-  muzzleBottom: {fileID: 0}
-  weaponPower: 0
+  muzzleTop: {fileID: 7772291526626511363}
+  muzzleMiddle: {fileID: 3098575307456224433}
+  muzzleBottom: {fileID: 3037080983319244675}
+  weaponPower: 3
   fireInterval: 0.12
 --- !u!50 &3098575308372862734
 Rigidbody2D:
