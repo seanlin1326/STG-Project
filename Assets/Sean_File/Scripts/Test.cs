@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//é€™æ˜¯ä¸€å€‹æœªä¾†æœƒåˆªæŽ‰çš„è…³æœ¬
+//³o¬O¤@­Ó¥¼¨Ó·|§R±¼ªº¸}¥»
 namespace Sean
 {
     public class Test : MonoBehaviour
     {
-        //é€™æ˜¯ä¸€å€‹æœªä¾†æœƒåˆªæŽ‰çš„è…³æœ¬
-        //é€™æ˜¯ä¸€å€‹æœªä¾†æœƒåˆªæŽ‰çš„è…³æœ¬
-        //é€™æ˜¯ä¸€å€‹æœªä¾†æœƒåˆªæŽ‰çš„è…³æœ¬
-        //é€™æ˜¯ä¸€å€‹æœªä¾†æœƒåˆªæŽ‰çš„è…³æœ¬
+        //³o¬O¤@­Ó¥¼¨Ó·|§R±¼ªº¸}¥»
+        //³o¬O¤@­Ó¥¼¨Ó·|§R±¼ªº¸}¥»
+        //³o¬O¤@­Ó¥¼¨Ó·|§R±¼ªº¸}¥»
+        //³o¬O¤@­Ó¥¼¨Ó·|§R±¼ªº¸}¥»
 
         // Start is called before the first frame update
         void Start()

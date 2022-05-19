@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 9142271482941849201}
   - component: {fileID: 9142271482941849200}
   - component: {fileID: 9142271482941849167}
-  m_Layer: 0
+  - component: {fileID: 3868702410481919650}
+  m_Layer: 9
   m_Name: Enemy_Projectile_Basic_10_O'Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,3 +143,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   moveDirection: {x: -1, y: 0.1667}
+--- !u!70 &3868702410481919650
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142271482941849166}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0005502395, y: 0.006738038}
+  m_Size: {x: 0.24658263, y: 0.10304828}
+  m_Direction: 1
