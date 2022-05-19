@@ -25,7 +25,7 @@ namespace Sean
         [SerializeField] GameObject projectile1;
         [SerializeField] GameObject projectile2;
         [SerializeField] GameObject projectile3;
-        //¤l¼u¥Í¦¨ÂI
+        //ï¿½lï¿½uï¿½Í¦ï¿½ï¿½I
         [SerializeField] Transform muzzleTop;
         [SerializeField] Transform muzzleMiddle;
         [SerializeField] Transform muzzleBottom;

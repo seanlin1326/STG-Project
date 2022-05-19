@@ -53,11 +53,11 @@ namespace Sean
                 _pool.Initialize(_poolParent);
             }
         }
-#region -- Release ·¥¨ä­«¸ü --
+#region -- Release åŠç›¸é—œåƒæ•¸ --
         /// <summary>
-        /// ®Ú¾Ú¶Ç¤Jªº <paramref name="_prefab"/>°Ñ¼Æ¡Aªğ¦^¹ï¶H¦À¤¤¹ïÀ³ªº¹CÀ¸¹ï¶H
+        /// æ ¹æ“šå‚³å…¥çš„<paramref name="_prefab"/>åƒæ•¸è¿”å›å°è±¡æ± ä¸­æº–å‚™å¥½çš„å°æ‡‰éŠæˆ²å°è±¡
         /// </summary>
-        /// <param name="_prefab"></param>
+
         /// <returns></returns>
         public static GameObject Release(GameObject _prefab)
         {
@@ -71,12 +71,8 @@ namespace Sean
 
         }
         /// <summary>
-        /// ®Ú¾Ú¶Ç¤Jªº <paramref name="_prefab"/>°Ñ¼Æ¡Aªğ¦^¹ï¶H¦À¤¤¹ïÀ³ªº¹CÀ¸¹ï¶H
+        /// æ ¹æ“šå‚³å…¥çš„<paramref name="_prefab"/>åƒæ•¸è¿”å›å°è±¡æ± ä¸­æº–å‚™å¥½çš„å°æ‡‰éŠæˆ²å°è±¡
         /// </summary>
-        /// <param name="_prefab"><para>«ü©wªº¹CÀ¸¹ï¶H¹w»sÅé</para>
-        /// </param>
-        /// <param name="_position"><para>«ü©wªº¹CÀ¸¹ï¶Hªº¦ì¸m</para>
-        /// </param>
         /// <returns></returns>
         public static GameObject Release(GameObject _prefab,Vector3 _position)
         {
@@ -90,11 +86,9 @@ namespace Sean
 
         }
         /// <summary>
-        /// ®Ú¾Ú¶Ç¤Jªº <paramref name="_prefab"/>°Ñ¼Æ¡Aªğ¦^¹ï¶H¦À¤¤¹ïÀ³ªº¹CÀ¸¹ï¶H
+        /// æ ¹æ“šå‚³å…¥çš„<paramref name="_prefab"/>åƒæ•¸è¿”å›å°è±¡æ± ä¸­æº–å‚™å¥½çš„å°æ‡‰éŠæˆ²å°è±¡
         /// </summary>
-        /// <param name="_prefab"><para>«ü©wªº¹CÀ¸¹ï¶H¹w»sÅé</para></param>
-        /// <param name="_position"><para>«ü©wªº¹CÀ¸¹ï¶Hªº¦ì¸m</para></param>
-        /// <param name="_rotation"><para>«ü©wªº¹CÀ¸¹ï¶Hªº±ÛÂà¨¤«×</para></param>
+     
         /// <returns></returns>
         public static GameObject Release(GameObject _prefab, Vector3 _position,Quaternion _rotation)
         {
@@ -108,12 +102,9 @@ namespace Sean
 
         }
         /// <summary>
-        ///®Ú¾Ú¶Ç¤Jªº <paramref name="_prefab"/>°Ñ¼Æ¡Aªğ¦^¹ï¶H¦À¤¤¹ïÀ³ªº¹CÀ¸¹ï¶H
+        /// æ ¹æ“šå‚³å…¥çš„<paramref name="_prefab"/>åƒæ•¸è¿”å›å°è±¡æ± ä¸­æº–å‚™å¥½çš„å°æ‡‰éŠæˆ²å°è±¡
         /// </summary>
-        /// <param name="_prefab"><para>«ü©wªº¹CÀ¸¹ï¶H¹w»sÅé</para></param>
-        /// <param name="_position"><para>«ü©wªº¹CÀ¸¹ï¶Hªº¦ì¸m</para></param>
-        /// <param name="_rotation"><para>«ü©wªº¹CÀ¸¹ï¶Hªº±ÛÂà¨¤«×</para></param>
-        /// <param name="_localScale"><para>«ü©wªº¹CÀ¸¹ï¶HªºÁY©ñ¤j¤p</para></param>
+        
         /// <returns></returns>
         public static GameObject Release(GameObject _prefab, Vector3 _position, Quaternion _rotation,Vector3 _localScale)
         {

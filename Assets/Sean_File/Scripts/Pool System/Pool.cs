@@ -45,7 +45,7 @@ namespace Sean
             queue.Enqueue(_availableObj);
             return _availableObj;
         }
-        #region -- PreparedObject 及其重載 --
+        #region -- PreparedObject 嚙諄其重嚙踝蕭 --
         public GameObject PreparedObject()
         {
             GameObject _preparedObj = AvailableObject();
