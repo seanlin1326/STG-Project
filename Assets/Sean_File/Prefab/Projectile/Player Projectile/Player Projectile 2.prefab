@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7653462834797500392}
   - component: {fileID: 7653462834797500393}
   - component: {fileID: 5881807507395475530}
+  - component: {fileID: 3521095051097723041}
   m_Layer: 8
   m_Name: Player Projectile 2
   m_TagString: Untagged
@@ -45,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba0e3bf329a5174fbb3a865022b50d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitVFX: {fileID: 5060298685065931927, guid: 6775c68a79b34db4fa2fd4db2a4cdf74, type: 3}
+  damage: 1
   moveSpeed: 15
   moveDirection: {x: 1, y: 0.05}
 --- !u!114 &5881807507395475530
@@ -61,6 +64,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyGameObj: 0
   lifeTime: 3
+--- !u!70 &3521095051097723041
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653462834797500399}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.026703376, y: -0.0024460515}
+  m_Size: {x: 0.27694812, y: 0.1292937}
+  m_Direction: 1
 --- !u!1 &7653462835108062517
 GameObject:
   m_ObjectHideFlags: 0

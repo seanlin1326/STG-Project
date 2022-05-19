@@ -7,6 +7,7 @@ namespace Sean
     {
         [SerializeField] List<Pool> playerProjectilePools=new List<Pool>();
         [SerializeField] List<Pool> enemyProjectilePools = new List<Pool>();
+        [SerializeField] List<Pool> vFXPools = new List<Pool>();
       static Dictionary<GameObject, Pool> dictionary;
         // Start is called before the first frame update
         void Start()
@@ -15,12 +16,14 @@ namespace Sean
             dictionary = new Dictionary<GameObject, Pool>();
             Initialize(playerProjectilePools);
             Initialize(enemyProjectilePools);
+            Initialize(vFXPools);
         }
         private void OnDestroy()
         {
          #if UNITY_EDITOR
             CheckPoolSize(playerProjectilePools);
             CheckPoolSize(enemyProjectilePools);
+            CheckPoolSize(vFXPools);
          #endif
         }
         void CheckPoolSize(List<Pool> _pools)

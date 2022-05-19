@@ -5,6 +5,8 @@ namespace Sean
 {
     public class Player : Charactor
     {
+        [SerializeField] StatsBar_HUD statsBar_HUD;
+
        [SerializeField] bool regenerateHealth = true;
         [SerializeField] float healthGenerateTime;
         [SerializeField,Range(0f,1f)] float healthGeneratePercent;
@@ -62,11 +64,13 @@ namespace Sean
            
             rigidbody.gravityScale = 0;
             input.EnableGamePlayInput();
+            statsBar_HUD.Initialize(health,maxHealth);
            
         }
         public override void TakeDamage(float _damage)
         {
             base.TakeDamage(_damage);
+            statsBar_HUD.UpdateStats(health, maxHealth);
             if (gameObject.activeSelf)
             {
                 if (regenerateHealth)
@@ -76,6 +80,16 @@ namespace Sean
                     healthGenerateCoroutine = StartCoroutine(HealthRegenerateCo(healthGenerateTime,healthGeneratePercent));
                 }
             }
+        }
+        public override void RestoreHealth(float _value)
+        {
+            base.RestoreHealth(_value);
+            statsBar_HUD.UpdateStats(health, maxHealth);
+        }
+        public override void Die()
+        {
+            statsBar_HUD.UpdateStats(0, maxHealth);
+            base.Die();
         }
         // Update is called once per frame
         void Update()
@@ -105,9 +119,9 @@ namespace Sean
             float _t = 0;
             while (_t < _time)
             {
-                _t += Time.fixedDeltaTime / _time;
-                rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, _moveVelocity, _t / _time);
-                transform.rotation = Quaternion.Lerp(transform.rotation, _moveRotation, _t / _time);
+                _t += Time.fixedDeltaTime ;
+                rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, _moveVelocity, _t /_time);
+                transform.rotation = Quaternion.Lerp(transform.rotation, _moveRotation, _t/_time);
                 yield return null;
             }
         }

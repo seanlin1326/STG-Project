@@ -5,7 +5,7 @@ namespace Sean
 {
     public class EnemyProjectile_Aiming : Projectile
     {
-        [SerializeField] GameObject target;
+         GameObject target;
         private void Awake()
         {
             target = GameObject.FindGameObjectWithTag("Player");

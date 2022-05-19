@@ -11,13 +11,38 @@ namespace Sean
 
         [SerializeField]protected float health = 1;
 
+       [SerializeField] StatsBar onHeadHealthBar;
+        [SerializeField] bool showOnHeadHealthBar=true;
         protected virtual void OnEnable()
         {
             health = maxHealth;
+            if (showOnHeadHealthBar)
+            {
+                ShowOnHeadHealthBar();
+            }
+            else
+            {
+                HideOnHeadHealthBar();
+            }
+        }
+        public void ShowOnHeadHealthBar()
+        {
+            onHeadHealthBar.gameObject.SetActive(true);
+            onHeadHealthBar.Initialize(health, maxHealth);
+        }
+        public void HideOnHeadHealthBar()
+        {
+            onHeadHealthBar.gameObject.SetActive(false);
         }
         public virtual void TakeDamage(float _damage)
         {
             health -= _damage;
+
+            if (showOnHeadHealthBar)
+            {
+                onHeadHealthBar.UpdateStats(health, maxHealth);
+            }
+
             if (health <= 0f)
             {
                 Die();
