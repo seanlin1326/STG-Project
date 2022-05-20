@@ -14,6 +14,7 @@ namespace Sean
         //Fire
         public event UnityAction onFire;
         public event UnityAction onStopFire;
+        public event UnityAction onDodge;
         InputActions inputActions;
 
         private void OnEnable()
@@ -69,6 +70,14 @@ namespace Sean
             if (context.canceled)
             {
                 onStopFire?.Invoke();
+            }
+        }
+
+        public void OnDodge(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                onDodge?.Invoke();
             }
         }
     }

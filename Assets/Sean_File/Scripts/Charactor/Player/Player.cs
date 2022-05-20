@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility;
 namespace Sean
 {
     public class Player : Charactor
@@ -23,11 +24,11 @@ namespace Sean
 
         [SerializeField] float paddingX = 0.2f;
         [SerializeField] float paddingY = 0.2f;
-        [Header("Fire")]
+        [Header("--- Fire ---")]
         [SerializeField] GameObject projectile1;
         [SerializeField] GameObject projectile2;
         [SerializeField] GameObject projectile3;
-        //�l�u�ͦ��I
+        //Shoot projectile start point
         [SerializeField] Transform muzzleTop;
         [SerializeField] Transform muzzleMiddle;
         [SerializeField] Transform muzzleBottom;
@@ -35,12 +36,25 @@ namespace Sean
         [SerializeField, Range(1, 3)] int weaponPower=1;
 
         [SerializeField] float fireInterval=0.2f;
+        [Header("--- Dodge ---")]
+        [SerializeField,Range(0,199)] int dodgeEnergyCost=25;
+        [SerializeField] float maxRoll = 720f;
+        [SerializeField] float rollSpeed = 360f;
+        [SerializeField] Vector3 dodgeScale = new Vector3(0.5f, 0.5f, 0.5f);
+        float currentRoll;
+        float dodgeDuration;
+        bool isDodging=false;
+
+
         new Rigidbody2D rigidbody;
+        new Collider2D collider;
         Coroutine moveCoroutine;
         Coroutine healthGenerateCoroutine;
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody2D>();
+            collider = GetComponent<Collider2D>();
+            dodgeDuration = maxRoll / rollSpeed;
         }
 
         protected override void OnEnable()
@@ -50,6 +64,7 @@ namespace Sean
             input.onStopMove += StopMove;
             input.onFire += Fire;
             input.onStopFire += StopFire;
+            input.onDodge += Dodge;
         }
         private void OnDisable()
         {
@@ -57,6 +72,7 @@ namespace Sean
             input.onStopMove -= StopMove;
             input.onFire -= Fire;
             input.onStopFire -= StopFire;
+            input.onDodge -= Dodge;
         }
         // Start is called before the first frame update
         void Start()
@@ -168,6 +184,62 @@ namespace Sean
                 }
                 yield return new WaitForSeconds(fireInterval);
             }
+        }
+        #endregion
+        #region -- Dodge --
+        void Dodge()
+        {
+           
+            if (isDodging || !PlayerEnergy.Instance.IsEnough(dodgeEnergyCost)) return;
+            StartCoroutine(nameof(DodgeCo));
+            //Change player's scale 改變玩家的縮放值
+        }
+        IEnumerator DodgeCo()
+        {
+            isDodging = true;
+            //Cost Energy 消耗能量
+            PlayerEnergy.Instance.Use(dodgeEnergyCost);
+            //Make player invincible 讓玩家無敵
+            collider.isTrigger = true;
+            //Make player rotate along x axis 讓玩家沿著x軸旋轉
+            currentRoll = 0;
+
+            #region -- Method 1 --
+            //float _t1 = 0;
+            //float _t2 = 0;
+            //while(currentRoll < maxRoll)
+            //{
+            //    Debug.Log(currentRoll);
+            //    currentRoll += rollSpeed * Time.deltaTime;
+            //    transform.rotation = Quaternion.AngleAxis(currentRoll,Vector3.right);
+            //    if(currentRoll < maxRoll / 2)
+            //    {
+            //        _t1 += Time.deltaTime / (dodgeDuration);
+            //        transform.localScale = Vector3.Lerp(transform.localScale, dodgeScale, _t1);
+
+            //    }
+            //    else
+            //    {
+            //        _t2 += Time.deltaTime / (dodgeDuration/2);
+            //        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, _t2);
+
+            //    }
+            //   yield return null;
+            //}
+            #endregion
+            #region -- Method 2 --
+            while (currentRoll < maxRoll)
+            {
+              
+                currentRoll += rollSpeed * Time.deltaTime;
+                transform.rotation = Quaternion.AngleAxis(currentRoll, Vector3.right);
+              transform.localScale=  BezierCurve.QuadraticPoint(Vector3.one, Vector3.one, dodgeScale, currentRoll / maxRoll);
+                yield return null;
+            }
+            #endregion
+
+            collider.isTrigger = false;
+            isDodging = false;
         }
         #endregion
     }

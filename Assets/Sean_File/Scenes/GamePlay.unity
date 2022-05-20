@@ -1319,9 +1319,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+      propertyPath: maxRoll
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+      propertyPath: dodgeScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+      propertyPath: dodgeScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+      propertyPath: dodgeScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
       propertyPath: statsBar_HUD
       value: 
       objectReference: {fileID: 4713528840570222130}
+    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+      propertyPath: dodgeEnergyCost
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6709322897653869293, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
       propertyPath: energyBar
       value: 
@@ -1386,6 +1406,10 @@ PrefabInstance:
     - target: {fileID: 4115387610214525993, guid: 12c7f8cbba38b39488ad176f9e84feba, type: 3}
       propertyPath: m_Name
       value: Enemy3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115387610214525993, guid: 12c7f8cbba38b39488ad176f9e84feba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4115387610214526007, guid: 12c7f8cbba38b39488ad176f9e84feba, type: 3}
       propertyPath: m_RootOrder
@@ -1499,6 +1523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy2
       objectReference: {fileID: 0}
+    - target: {fileID: 4553380753606942749, guid: 28254c51d13110048915ec492e21c51e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28254c51d13110048915ec492e21c51e, type: 3}
 --- !u!1001 &5304734943599769937
@@ -1511,6 +1539,10 @@ PrefabInstance:
     - target: {fileID: 5432818701392918310, guid: b34a81f98f35d9f40898c53068731d45, type: 3}
       propertyPath: m_Name
       value: Enemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432818701392918310, guid: b34a81f98f35d9f40898c53068731d45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5432818701392918328, guid: b34a81f98f35d9f40898c53068731d45, type: 3}
       propertyPath: m_RootOrder

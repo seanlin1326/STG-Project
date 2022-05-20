@@ -13,6 +13,7 @@ namespace Sean
         private void Start()
         {
             energyBar.Initialize(energy, MAX);
+            Obtain(MAX);
 
         }
         public void Obtain(int _value)
@@ -24,10 +25,14 @@ namespace Sean
         }
         public void Use(int _value)
         {
-           
+            if (!IsEnough(_value))
+            {
+                Debug.Log("能量不夠");
+                return;
+            }
             energy = Mathf.Clamp(energy - _value, 0, MAX);
             energyBar.UpdateStats(energy, MAX);
         }
-        public bool IsEnough(int _value) => energy > _value;
+        public bool IsEnough(int _value) => energy >= _value;
     }
 }
