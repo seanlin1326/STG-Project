@@ -115,6 +115,7 @@ MonoBehaviour:
   health: 1
   onHeadHealthBar: {fileID: 749156666257231259}
   showOnHeadHealthBar: 1
+  deathEnergyBonus: 3
 --- !u!1 &6881759409264261403
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ namespace Sean
         {
             health -= _damage;
 
-            if (showOnHeadHealthBar)
+            if (showOnHeadHealthBar && gameObject.activeSelf)
             {
                 onHeadHealthBar.UpdateStats(health, maxHealth);
             }

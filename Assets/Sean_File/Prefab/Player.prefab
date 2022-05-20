@@ -33882,6 +33882,7 @@ GameObject:
   - component: {fileID: 6634290929158165658}
   - component: {fileID: 3098575308372862734}
   - component: {fileID: 7831937492536556494}
+  - component: {fileID: 6709322897653869293}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -33926,6 +33927,7 @@ MonoBehaviour:
   health: 1
   onHeadHealthBar: {fileID: 8265470439410752644}
   showOnHeadHealthBar: 1
+  statsBar_HUD: {fileID: 0}
   regenerateHealth: 1
   healthGenerateTime: 12
   healthGeneratePercent: 0.02
@@ -33942,7 +33944,7 @@ MonoBehaviour:
   muzzleTop: {fileID: 7772291526626511363}
   muzzleMiddle: {fileID: 3098575307456224433}
   muzzleBottom: {fileID: 3037080983319244675}
-  weaponPower: 2
+  weaponPower: 1
   fireInterval: 0.12
 --- !u!50 &3098575308372862734
 Rigidbody2D:
@@ -33981,6 +33983,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.02721716, y: -0.06532241}
   m_Size: {x: 1.6858914, y: 0.36855713}
   m_Direction: 1
+--- !u!114 &6709322897653869293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236874700052467699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887547ac8d02f4f4cb57fdbab17fb2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyBar: {fileID: 0}
 --- !u!1 &8236874701127706765
 GameObject:
   m_ObjectHideFlags: 0
@@ -43681,6 +43696,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8236874700052467700}
     m_Modifications:
+    - target: {fileID: 4361121129361770092, guid: 374c47fe2e224e845b228d740cc3769a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: e9c458eb4c3e0254896a61c4a33ddd56, type: 2}
     - target: {fileID: 4361121129399670980, guid: 374c47fe2e224e845b228d740cc3769a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -43777,6 +43796,14 @@ PrefabInstance:
       propertyPath: fillSpeed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4361121129782716468, guid: 374c47fe2e224e845b228d740cc3769a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 706e37cca042eea47823359be11906cc, type: 2}
+    - target: {fileID: 4361121130484301534, guid: 374c47fe2e224e845b228d740cc3769a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: e30d79ced87831a48ba582f0397017a0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 374c47fe2e224e845b228d740cc3769a, type: 3}
 --- !u!114 &8265470439410752644 stripped

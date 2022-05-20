@@ -24,6 +24,10 @@ namespace Sean
             canvas = GetComponent<Canvas>();
             canvas.worldCamera = Camera.main;
         }
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
         public virtual void Initialize(float _currentValue,float _maxValue)
         {
             currentFillAmount = _currentValue / _maxValue;
@@ -48,7 +52,7 @@ namespace Sean
            bufferedFillingCoroutine = StartCoroutine(BufferedFillingCo(fillImageBack));
             }
             //if stats increace 當狀態增加值
-            if (currentFillAmount < targetFillAmount)
+          else if (currentFillAmount < targetFillAmount)
             {
                 //fill image back's fill amount= target fill amount 後面圖片的填充值 = 目標填充值
                 fillImageBack.fillAmount = targetFillAmount;
