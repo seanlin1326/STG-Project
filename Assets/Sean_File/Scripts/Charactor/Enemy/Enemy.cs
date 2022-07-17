@@ -9,6 +9,7 @@ namespace Sean
         public override void Die()
         {
             PlayerEnergy.Instance.Obtain(deathEnergyBonus);
+            EnemyManager.Instance.RemoveFromList(gameObject);
             base.Die();
         }
     }
