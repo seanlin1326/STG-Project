@@ -5,6 +5,10 @@ namespace Sean
 {
     public class EnemyManager : Singleton<EnemyManager>
     {
+        public int WaveNumber => waveNumber;
+        public float TimeBetweenWaves => timeBetweenWaves;
+
+
         [SerializeField] bool spawnEnemy=true;
         [SerializeField] GameObject[] enemyPrefabs;
         [SerializeField] float timeBetweenSpawns = 1f;
@@ -12,7 +16,7 @@ namespace Sean
        [SerializeField] float timeBetweenWaves = 1f;
        [SerializeField] int minEnemyAmount=4;
        [SerializeField] int maxEnemyAmount=10;
-
+        [SerializeField] WaveUI waveUIController;
         [SerializeField] Transform defaultEnemySpawnPoint;
         int waveNumber = 1;
         int enemyAmount;
@@ -29,7 +33,10 @@ namespace Sean
             while (spawnEnemy)
             {
                 yield return new WaitUntil(() => enemyList.Count == 0);
+
+                waveUIController.OpenOrCloseWaveUI(true);
                 yield return new WaitForSeconds(timeBetweenWaves);
+                waveUIController.OpenOrCloseWaveUI(false);
                 yield return  RandomlySpawnCo();
                 
         }

@@ -121,14 +121,14 @@ namespace Sean
             Quaternion _moveRotation = Quaternion.AngleAxis(moveRotationAngle * _moveInput.y, Vector3.right);
 
             moveCoroutine = StartCoroutine(MoveCo(accelerationTime, _moveInput.normalized * moveSpeed, _moveRotation));
-            StartCoroutine(MovePositionLimitCo());
+            StartCoroutine(nameof(MovePositionLimitCo));
         }
         void StopMove()
         {
             if (moveCoroutine != null)
                 StopCoroutine(moveCoroutine);
             StartCoroutine(MoveCo(decelerationTime, Vector2.zero, Quaternion.identity));
-            StopCoroutine(MovePositionLimitCo());
+            StopCoroutine(nameof(MovePositionLimitCo));
         }
         IEnumerator MoveCo(float _time, Vector2 _moveVelocity, Quaternion _moveRotation)
         {
