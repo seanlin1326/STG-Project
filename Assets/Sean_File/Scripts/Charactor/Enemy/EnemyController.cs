@@ -13,6 +13,7 @@ namespace Sean
 
         [Header("----- Fire -----")]
        [SerializeField] List<GameObject> projectiles;
+        [SerializeField] AudioData[] projectileLaunchSFX;
        [SerializeField] Transform muzzle;
 
       [SerializeField] float minFireInterval=1;
@@ -23,7 +24,7 @@ namespace Sean
         {
 
             StartCoroutine(nameof(RandomlyMovingCo));
-            StartCoroutine(nameof(RandomlyFireCo));
+            StartCoroutine(nameof(RandomlyFireCoroutine));
         }
         private void OnDisable()
         {
@@ -53,7 +54,7 @@ namespace Sean
             }
         }
 
-        IEnumerator RandomlyFireCo()
+        IEnumerator RandomlyFireCoroutine()
         {
             while (gameObject.activeSelf)
             {
@@ -62,6 +63,7 @@ namespace Sean
                 {
                     PoolManager.Release(_projectile, muzzle.position);
                 }
+                AudioManager.Instance.PlayRandomSFX(projectileLaunchSFX);
             }
         }
         }

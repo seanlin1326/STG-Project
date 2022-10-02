@@ -32,12 +32,13 @@ namespace Sean
         [SerializeField] Transform muzzleTop;
         [SerializeField] Transform muzzleMiddle;
         [SerializeField] Transform muzzleBottom;
-
+        [SerializeField] AudioData playerProjectileLaunchSFX;
         [SerializeField, Range(1, 3)] int weaponPower=1;
 
         [SerializeField] float fireInterval=0.2f;
         [Header("--- Dodge ---")]
-        [SerializeField,Range(0,199)] int dodgeEnergyCost=25;
+        [SerializeField] AudioData dodgeSFX;
+         [SerializeField,Range(0,199)] int dodgeEnergyCost=25;
         [SerializeField] float maxRoll = 720f;
         [SerializeField] float rollSpeed = 360f;
         [SerializeField] Vector3 dodgeScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -182,6 +183,7 @@ namespace Sean
                         break;
 
                 }
+                AudioManager.Instance.PlayRandomSFX(playerProjectileLaunchSFX);
                 yield return new WaitForSeconds(fireInterval);
             }
         }
@@ -191,12 +193,13 @@ namespace Sean
         {
            
             if (isDodging || !PlayerEnergy.Instance.IsEnough(dodgeEnergyCost)) return;
-            StartCoroutine(nameof(DodgeCo));
+            StartCoroutine(nameof(DodgeCoroutine));
             //Change player's scale 改變玩家的縮放值
         }
-        IEnumerator DodgeCo()
+        IEnumerator DodgeCoroutine()
         {
             isDodging = true;
+            AudioManager.Instance.PlayRandomSFX(dodgeSFX);
             //Cost Energy 消耗能量
             PlayerEnergy.Instance.Use(dodgeEnergyCost);
             //Make player invincible 讓玩家無敵

@@ -33923,6 +33923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 1587261729604890, guid: 600ec83cba1cec448bf41a6607229741, type: 3}
+  deathSFX:
+  - audioClip: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
+    volume: 1
   maxHealth: 100
   health: 1
   onHeadHealthBar: {fileID: 8265470439410752644}
@@ -33944,8 +33947,18 @@ MonoBehaviour:
   muzzleTop: {fileID: 7772291526626511363}
   muzzleMiddle: {fileID: 3098575307456224433}
   muzzleBottom: {fileID: 3037080983319244675}
-  weaponPower: 1
+  playerProjectileLaunchSFX:
+    audioClip: {fileID: 8300000, guid: 53622e00a83edfb49a70bcbb9a4eebec, type: 3}
+    volume: 0.5
+  weaponPower: 3
   fireInterval: 0.12
+  dodgeSFX:
+    audioClip: {fileID: 8300000, guid: 9fc03a91b5216b74394a6166059d68f2, type: 3}
+    volume: 1
+  dodgeEnergyCost: 20
+  maxRoll: 360
+  rollSpeed: 360
+  dodgeScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!50 &3098575308372862734
 Rigidbody2D:
   serializedVersion: 4

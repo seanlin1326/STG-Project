@@ -123,6 +123,13 @@ MonoBehaviour:
   moveRotationAngle: 35
   projectiles:
   - {fileID: 9142271482941849166, guid: b5315806d3a7cf1499f5bc91a4952116, type: 3}
+  projectileLaunchSFX:
+  - audioClip: {fileID: 8300000, guid: 406abe6e803b244eca380af5865dc5cb, type: 3}
+    volume: 0.5
+  - audioClip: {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
+    volume: 0.5
+  - audioClip: {fileID: 8300000, guid: 35644134c067099459f55ecfa2efd85d, type: 3}
+    volume: 0.5
   muzzle: {fileID: 5526323734595815666}
   minFireInterval: 1
   maxFireInterval: 3.5
@@ -139,6 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 2342042931496088306, guid: 97b415311529fa145aacd3eedaac728e, type: 3}
+  deathSFX:
+  - audioClip: {fileID: 8300000, guid: 9314f85ef4c5ea04a87a0323c78fdd2e, type: 3}
+    volume: 1
+  - audioClip: {fileID: 8300000, guid: 0f2184b0c1d094741b11e8f4077c52e9, type: 3}
+    volume: 1
   maxHealth: 8
   health: 1
   onHeadHealthBar: {fileID: 8452723386749724108}

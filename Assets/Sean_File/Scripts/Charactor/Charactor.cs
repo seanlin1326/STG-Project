@@ -5,7 +5,9 @@ namespace Sean
 {
     public class Charactor : MonoBehaviour
     {
+        [Header("---Death---")]
         [SerializeField] GameObject deathVFX;
+        [SerializeField] AudioData[] deathSFX;
         [Header("---Health---")]
         [SerializeField] protected float maxHealth = 1;
 
@@ -51,6 +53,7 @@ namespace Sean
         public virtual void Die()
         {
             health = 0f;
+            AudioManager.Instance.PlayRandomSFX(deathSFX);
             PoolManager.Release(deathVFX,transform.position);
             gameObject.SetActive(false);
         }
