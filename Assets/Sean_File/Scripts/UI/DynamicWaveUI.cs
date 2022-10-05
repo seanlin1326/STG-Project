@@ -55,10 +55,11 @@ namespace Sean
         IEnumerator UIMoveCoroutine(RectTransform rect,Vector2 position)
         {
             float _timer = 0f;
+            var previousLocalPosition = rect.localPosition;
             while (_timer<1f)
             {
                 _timer += Time.deltaTime / animationTime;
-                rect.localPosition = Vector2.Lerp(rect.localPosition,position,_timer);
+                rect.localPosition = Vector2.Lerp(previousLocalPosition, position,_timer);
                 yield return null;
             }
         }
@@ -73,10 +74,11 @@ namespace Sean
         IEnumerator UIScaleCoroutine(RectTransform rect,Vector2 scale)
         {
             float _timer = 0f;
-            while(_timer < 1f)
+            var previousLocalScale = rect.localScale;
+            while (_timer < 1f)
             {
                 _timer += Time.deltaTime / animationTime;
-                rect.localScale = Vector2.Lerp(rect.localScale,scale,_timer);
+                rect.localScale = Vector2.Lerp(previousLocalScale, scale,_timer);
                 yield return null;
             }
         }

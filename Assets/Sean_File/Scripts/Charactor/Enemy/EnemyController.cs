@@ -23,14 +23,14 @@ namespace Sean
         private void OnEnable()
         {
 
-            StartCoroutine(nameof(RandomlyMovingCo));
+            StartCoroutine(nameof(RandomlyMovingCoroutine));
             StartCoroutine(nameof(RandomlyFireCoroutine));
         }
         private void OnDisable()
         {
             StopAllCoroutines();
         }
-        IEnumerator RandomlyMovingCo()
+        IEnumerator RandomlyMovingCoroutine()
         {
             yield return null;
             transform.position=Viewport.Instance.RandomEnemySpawnPosition(paddingX, paddingY);
@@ -39,10 +39,10 @@ namespace Sean
             while (gameObject.activeSelf)
             {
                 //if has not arrived targetPosition
-                if (Vector3.Distance(transform.position, _targetPosition) > Mathf.Epsilon)
+                if (Vector3.Distance(transform.position, _targetPosition) >= moveSpeed * Time.fixedDeltaTime)
                 {
                     //keep moving to targetPosition
-                    transform.position = Vector3.MoveTowards(transform.position, _targetPosition, moveSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, _targetPosition, moveSpeed * Time.fixedDeltaTime);
                     transform.rotation = Quaternion.AngleAxis((_targetPosition - transform.position).normalized.y * moveRotationAngle, Vector3.right);
                 }
                 else
@@ -50,7 +50,7 @@ namespace Sean
                     //set a new target
                     _targetPosition = Viewport.Instance.RandomRightHalfPosition(paddingX, paddingY);
                 }
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
 
