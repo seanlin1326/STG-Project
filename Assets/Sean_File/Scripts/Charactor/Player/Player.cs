@@ -42,10 +42,16 @@ namespace Sean
         [SerializeField] float maxRoll = 720f;
         [SerializeField] float rollSpeed = 360f;
         [SerializeField] Vector3 dodgeScale = new Vector3(0.5f, 0.5f, 0.5f);
+        [Header("--- Overdrive ---")]
+        [SerializeField]int overDriveDodgeFactor = 2;
+        [SerializeField]float overDriveSpeedFactor = 1.2f;
+        [SerializeField]float overDriveFireFactor = 1.2f;
+
+
         float currentRoll;
         float dodgeDuration;
         bool isDodging=false;
-
+        bool isOverdriving = false;
 
         new Rigidbody2D rigidbody;
         new Collider2D collider;
@@ -66,6 +72,9 @@ namespace Sean
             input.onFire += Fire;
             input.onStopFire += StopFire;
             input.onDodge += Dodge;
+            input.onOverdrive += OverDrive;
+
+           
         }
         private void OnDisable()
         {
@@ -74,6 +83,9 @@ namespace Sean
             input.onFire -= Fire;
             input.onStopFire -= StopFire;
             input.onDodge -= Dodge;
+            input.onOverdrive -= OverDrive;
+
+            
         }
         // Start is called before the first frame update
         void Start()
@@ -243,6 +255,29 @@ namespace Sean
 
             collider.isTrigger = false;
             isDodging = false;
+        }
+        #endregion
+        #region -- OverDrive --
+        void OverDrive()
+        {
+            if (!PlayerEnergy.Instance.IsEnough(PlayerEnergy.MAX))
+            {
+                return;
+            }
+            PlayerOverdrive.on.Invoke();
+            Debug.Log("Haha");
+        }
+        void OverdriveOn()
+        {
+            isOverdriving = true;
+            dodgeEnergyCost *= overDriveDodgeFactor;
+            moveSpeed *= overDriveSpeedFactor;
+        }
+        void OverdriveOff()
+        {
+            isOverdriving = false;
+            dodgeEnergyCost /= overDriveDodgeFactor;
+            moveSpeed /= overDriveSpeedFactor;
         }
         #endregion
     }

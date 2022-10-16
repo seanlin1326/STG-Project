@@ -41,6 +41,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Overdrive"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4a3b4ca-5565-44e7-b648-42a7234cd685"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -219,6 +227,28 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1569b6da-b7bf-42c5-8c9d-0d4fc9b457e0"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Overdrive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4f24054-f12d-4a4c-9ec5-152fa826b07c"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Overdrive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +282,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
         m_GamePlay_Fire = m_GamePlay.FindAction("Fire", throwIfNotFound: true);
         m_GamePlay_Dodge = m_GamePlay.FindAction("Dodge", throwIfNotFound: true);
+        m_GamePlay_Overdrive = m_GamePlay.FindAction("Overdrive", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +335,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_Move;
     private readonly InputAction m_GamePlay_Fire;
     private readonly InputAction m_GamePlay_Dodge;
+    private readonly InputAction m_GamePlay_Overdrive;
     public struct GamePlayActions
     {
         private @InputActions m_Wrapper;
@@ -311,6 +343,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_GamePlay_Move;
         public InputAction @Fire => m_Wrapper.m_GamePlay_Fire;
         public InputAction @Dodge => m_Wrapper.m_GamePlay_Dodge;
+        public InputAction @Overdrive => m_Wrapper.m_GamePlay_Overdrive;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -329,6 +362,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Dodge.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnDodge;
                 @Dodge.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnDodge;
                 @Dodge.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnDodge;
+                @Overdrive.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnOverdrive;
+                @Overdrive.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnOverdrive;
+                @Overdrive.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnOverdrive;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -342,6 +378,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Dodge.started += instance.OnDodge;
                 @Dodge.performed += instance.OnDodge;
                 @Dodge.canceled += instance.OnDodge;
+                @Overdrive.started += instance.OnOverdrive;
+                @Overdrive.performed += instance.OnOverdrive;
+                @Overdrive.canceled += instance.OnOverdrive;
             }
         }
     }
@@ -360,5 +399,6 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnOverdrive(InputAction.CallbackContext context);
     }
 }

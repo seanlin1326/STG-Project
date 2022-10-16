@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Overdrive",
+                    "type": "Button",
+                    "id": "f4a3b4ca-5565-44e7-b648-42a7234cd685",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -204,6 +212,28 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1569b6da-b7bf-42c5-8c9d-0d4fc9b457e0",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Overdrive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4f24054-f12d-4a4c-9ec5-152fa826b07c",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Overdrive",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

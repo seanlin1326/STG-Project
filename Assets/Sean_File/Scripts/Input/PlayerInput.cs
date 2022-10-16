@@ -15,6 +15,7 @@ namespace Sean
         public event UnityAction onFire;
         public event UnityAction onStopFire;
         public event UnityAction onDodge;
+        public event UnityAction onOverdrive;
         InputActions inputActions;
 
         private void OnEnable()
@@ -78,6 +79,14 @@ namespace Sean
             if (context.performed)
             {
                 onDodge?.Invoke();
+            }
+        }
+
+        public void OnOverdrive(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                onOverdrive.Invoke();
             }
         }
     }
