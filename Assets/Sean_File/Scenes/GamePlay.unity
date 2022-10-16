@@ -1232,6 +1232,8 @@ MonoBehaviour:
     size: 30
   - prefab: {fileID: 7653462834797500399, guid: 842fa19cfb2f5694bbca1f5bdcc04503, type: 3}
     size: 30
+  - prefab: {fileID: 7653462834797500399, guid: 2d8ca3374c9a31948af1e7d6f54f4035, type: 3}
+    size: 30
   enemyProjectilePools:
   - prefab: {fileID: 9142271482941849166, guid: 4ebff4e1adcc4a843b6641b743fc4ee9, type: 3}
     size: 10
@@ -1247,7 +1249,9 @@ MonoBehaviour:
   - prefab: {fileID: 1587261729604890, guid: 600ec83cba1cec448bf41a6607229741, type: 3}
     size: 1
   - prefab: {fileID: 5060298685065931927, guid: 6775c68a79b34db4fa2fd4db2a4cdf74, type: 3}
-    size: 30
+    size: 15
+  - prefab: {fileID: 5060298685065931927, guid: d328234d85b877e43bf06db02f09fd79, type: 3}
+    size: 20
   - prefab: {fileID: 2342042931496088306, guid: 97b415311529fa145aacd3eedaac728e, type: 3}
     size: 15
   - prefab: {fileID: 4801493125213720806, guid: 94d3dff6247d98e4cb4d8d6f0be5e291, type: 3}
@@ -2554,6 +2558,10 @@ PrefabInstance:
       propertyPath: statsBar_HUD
       value: 
       objectReference: {fileID: 4713528840570222130}
+    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+      propertyPath: projectileOveride
+      value: 
+      objectReference: {fileID: 7653462834797500399, guid: 2d8ca3374c9a31948af1e7d6f54f4035, type: 3}
     - target: {fileID: 6709322897653869293, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
       propertyPath: energyBar
       value: 

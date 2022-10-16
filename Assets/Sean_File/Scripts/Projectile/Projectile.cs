@@ -10,18 +10,19 @@ namespace Sean
         [SerializeField]float damage; 
         [SerializeField]protected float moveSpeed = 10f;
         [SerializeField]protected Vector2 moveDirection;
-
-        IEnumerator MoveDirectlyCo()
+        protected GameObject target;
+        IEnumerator MoveDirectlyCoroutine()
         {
             while (gameObject.activeSelf)
             {
-                transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+                Move();
                 yield return null;
             }
         }
+        public void Move() => transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
         protected virtual void OnEnable()
         {
-            StartCoroutine(MoveDirectlyCo());
+            StartCoroutine(MoveDirectlyCoroutine());
         }
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
@@ -33,6 +34,10 @@ namespace Sean
                 AudioManager.Instance.PlayRandomSFX(hitSFX);
                 gameObject.SetActive(false);
             }
+        }
+        protected void SetTarget(GameObject target)
+        {
+            this.target = target;
         }
     }
 }

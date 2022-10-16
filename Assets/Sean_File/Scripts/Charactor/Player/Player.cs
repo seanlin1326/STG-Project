@@ -28,6 +28,7 @@ namespace Sean
         [SerializeField] GameObject projectile1;
         [SerializeField] GameObject projectile2;
         [SerializeField] GameObject projectile3;
+        [SerializeField] GameObject projectileOveride;
         //Shoot projectile start point
         [SerializeField] Transform muzzleTop;
         [SerializeField] Transform muzzleMiddle;
@@ -51,7 +52,7 @@ namespace Sean
         float currentRoll;
         float dodgeDuration;
         bool isDodging=false;
-        bool isOverdriving = false;
+        [SerializeField]bool isOverdriving = false;
 
         new Rigidbody2D rigidbody;
         new Collider2D collider;
@@ -73,8 +74,9 @@ namespace Sean
             input.onStopFire += StopFire;
             input.onDodge += Dodge;
             input.onOverdrive += OverDrive;
+            PlayerOverdrive.on += OverdriveOn;
+            PlayerOverdrive.off += OverdriveOff;
 
-           
         }
         private void OnDisable()
         {
@@ -84,8 +86,9 @@ namespace Sean
             input.onStopFire -= StopFire;
             input.onDodge -= Dodge;
             input.onOverdrive -= OverDrive;
+            PlayerOverdrive.on -= OverdriveOn;
+            PlayerOverdrive.off -= OverdriveOff;
 
-            
         }
         // Start is called before the first frame update
         void Start()
@@ -134,14 +137,15 @@ namespace Sean
             Quaternion _moveRotation = Quaternion.AngleAxis(moveRotationAngle * _moveInput.y, Vector3.right);
 
             moveCoroutine = StartCoroutine(MoveCo(accelerationTime, _moveInput.normalized * moveSpeed, _moveRotation));
-            StartCoroutine(nameof(MovePositionLimitCo));
+            StopCoroutine(nameof(DecelerationCoroutine));
+            StartCoroutine(nameof(MoveRangeLimitationCoroutine));
         }
         void StopMove()
         {
             if (moveCoroutine != null)
                 StopCoroutine(moveCoroutine);
             StartCoroutine(MoveCo(decelerationTime, Vector2.zero, Quaternion.identity));
-            StopCoroutine(nameof(MovePositionLimitCo));
+            StartCoroutine(nameof(DecelerationCoroutine));
         }
         IEnumerator MoveCo(float _time, Vector2 _moveVelocity, Quaternion _moveRotation)
         {
@@ -155,13 +159,18 @@ namespace Sean
             }
         }
 
-        IEnumerator MovePositionLimitCo()
+        IEnumerator MoveRangeLimitationCoroutine()
         {
             while (true)
             {
                 transform.position = Viewport.Instance.PlayerMovablePosition(transform.position, paddingX, paddingY);
                 yield return null;
             }
+        }
+        IEnumerator DecelerationCoroutine()
+        {
+            yield return new WaitForSeconds(decelerationTime);
+            StopCoroutine(nameof(MoveRangeLimitationCoroutine));
         }
         #endregion
         #region -- Fire --
@@ -182,16 +191,16 @@ namespace Sean
                 switch (weaponPower)
                 {
                     case 1:
-                        PoolManager.Release(projectile1, muzzleMiddle.position);
+                        PoolManager.Release(isOverdriving ? projectileOveride : projectile1, muzzleMiddle.position);
                         break;
                     case 2:
-                        PoolManager.Release(projectile1, muzzleTop.position);
-                        PoolManager.Release(projectile1, muzzleBottom.position);
+                        PoolManager.Release(isOverdriving ? projectileOveride : projectile1, muzzleTop.position);
+                        PoolManager.Release(isOverdriving ? projectileOveride : projectile1, muzzleBottom.position);
                         break;
                     case 3:
-                        PoolManager.Release(projectile1, muzzleMiddle.position);
-                        PoolManager.Release(projectile2, muzzleTop.position);
-                        PoolManager.Release(projectile3, muzzleBottom.position);
+                        PoolManager.Release(isOverdriving ? projectileOveride : projectile1, muzzleMiddle.position);
+                        PoolManager.Release(isOverdriving ? projectileOveride : projectile2, muzzleTop.position);
+                        PoolManager.Release(isOverdriving ? projectileOveride : projectile3, muzzleBottom.position);
                         break;
 
                 }
@@ -199,6 +208,7 @@ namespace Sean
                 yield return new WaitForSeconds(fireInterval);
             }
         }
+       
         #endregion
         #region -- Dodge --
         void Dodge()

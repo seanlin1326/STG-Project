@@ -5,10 +5,10 @@ namespace Sean
 {
     public class EnemyProjectile_Aiming : Projectile
     {
-         GameObject target;
+       
         private void Awake()
         {
-            target = GameObject.FindGameObjectWithTag("Player");
+           SetTarget(GameObject.FindGameObjectWithTag("Player"));
         }
         protected override void OnEnable()
         {
