@@ -1635,6 +1635,50 @@ Transform:
   m_Father: {fileID: 1811089185}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1624369838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1624369839}
+  - component: {fileID: 1624369840}
+  m_Layer: 0
+  m_Name: Time Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1624369839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624369838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624369840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624369838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454ab1fe3758f244c8fa5762c24c5b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTimeScale: 0.1
 --- !u!1 &1681880689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,6 +2302,11 @@ Transform:
   m_Father: {fileID: 575427416}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2088637587 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9099028392105970768, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+  m_PrefabInstance: {fileID: 3098575306416661074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143447148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,6 +2607,10 @@ PrefabInstance:
       propertyPath: statsBar_HUD
       value: 
       objectReference: {fileID: 4713528840570222130}
+    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
+      propertyPath: modelRenderer
+      value: 
+      objectReference: {fileID: 2088637587}
     - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
       propertyPath: projectileOveride
       value: 

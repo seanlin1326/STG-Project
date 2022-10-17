@@ -11,10 +11,11 @@ namespace Sean
         [SerializeField] float moveSpeed=2f;
         [SerializeField] float moveRotationAngle = 25f;
 
-        [Header("----- Fire -----")]
+       [Header("----- Fire -----")]
        [SerializeField] List<GameObject> projectiles;
-        [SerializeField] AudioData[] projectileLaunchSFX;
+       [SerializeField] AudioData[] projectileLaunchSFX;
        [SerializeField] Transform muzzle;
+      
 
       [SerializeField] float minFireInterval=1;
       [SerializeField] float maxFireInterval=3;

@@ -11,7 +11,7 @@ namespace Sean
        [SerializeField] bool regenerateHealth = true;
         [SerializeField] float healthGenerateTime;
         [SerializeField,Range(0f,1f)] float healthGeneratePercent;
-
+        [SerializeField] Renderer modelRenderer;
         [Header("--- Input ---")]
         [SerializeField] PlayerInput input;
         [Header("--- Move ---")]
@@ -22,8 +22,8 @@ namespace Sean
 
         [SerializeField] float moveRotationAngle = 50f;
 
-        [SerializeField] float paddingX = 0.2f;
-        [SerializeField] float paddingY = 0.2f;
+         float paddingX = 0.2f;
+         float paddingY = 0.2f;
         [Header("--- Fire ---")]
         [SerializeField] GameObject projectile1;
         [SerializeField] GameObject projectile2;
@@ -51,6 +51,7 @@ namespace Sean
 
         float currentRoll;
         float dodgeDuration;
+        readonly float slowMotionDuration = 1f;
         bool isDodging=false;
         [SerializeField]bool isOverdriving = false;
 
@@ -62,6 +63,9 @@ namespace Sean
         {
             rigidbody = GetComponent<Rigidbody2D>();
             collider = GetComponent<Collider2D>();
+            var size = modelRenderer.bounds.size;
+            paddingX = size.x / 2f;
+            paddingY = size.y / 2f;
             dodgeDuration = maxRoll / rollSpeed;
         }
 
@@ -103,6 +107,7 @@ namespace Sean
         {
             base.TakeDamage(_damage);
             statsBar_HUD.UpdateStats(health, maxHealth);
+            TimeController.Instance.BulletTime(slowMotionDuration);
             if (gameObject.activeSelf)
             {
                 if (regenerateHealth)
@@ -136,7 +141,7 @@ namespace Sean
 
             Quaternion _moveRotation = Quaternion.AngleAxis(moveRotationAngle * _moveInput.y, Vector3.right);
 
-            moveCoroutine = StartCoroutine(MoveCo(accelerationTime, _moveInput.normalized * moveSpeed, _moveRotation));
+            moveCoroutine = StartCoroutine(MoveCoroutine(accelerationTime, _moveInput.normalized * moveSpeed, _moveRotation));
             StopCoroutine(nameof(DecelerationCoroutine));
             StartCoroutine(nameof(MoveRangeLimitationCoroutine));
         }
@@ -144,10 +149,10 @@ namespace Sean
         {
             if (moveCoroutine != null)
                 StopCoroutine(moveCoroutine);
-            StartCoroutine(MoveCo(decelerationTime, Vector2.zero, Quaternion.identity));
+            StartCoroutine(MoveCoroutine(decelerationTime, Vector2.zero, Quaternion.identity));
             StartCoroutine(nameof(DecelerationCoroutine));
         }
-        IEnumerator MoveCo(float _time, Vector2 _moveVelocity, Quaternion _moveRotation)
+        IEnumerator MoveCoroutine(float _time, Vector2 _moveVelocity, Quaternion _moveRotation)
         {
             float _t = 0;
             while (_t < _time)
@@ -228,7 +233,7 @@ namespace Sean
             collider.isTrigger = true;
             //Make player rotate along x axis 讓玩家沿著x軸旋轉
             currentRoll = 0;
-
+            TimeController.Instance.BulletTime(slowMotionDuration, slowMotionDuration);
             #region -- Method 1 --
             //float _t1 = 0;
             //float _t2 = 0;
@@ -282,6 +287,7 @@ namespace Sean
             isOverdriving = true;
             dodgeEnergyCost *= overDriveDodgeFactor;
             moveSpeed *= overDriveSpeedFactor;
+            TimeController.Instance.BulletTime(slowMotionDuration,slowMotionDuration);
         }
         void OverdriveOff()
         {
