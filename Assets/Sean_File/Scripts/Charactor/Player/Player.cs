@@ -107,7 +107,7 @@ namespace Sean
         {
             base.TakeDamage(_damage);
             statsBar_HUD.UpdateStats(health, maxHealth);
-            TimeController.Instance.BulletTime(slowMotionDuration);
+           
             if (gameObject.activeSelf)
             {
                 if (regenerateHealth)

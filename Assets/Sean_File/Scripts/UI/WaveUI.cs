@@ -8,7 +8,7 @@ namespace Sean
         [SerializeField] GameObject waveUIGameObject;
         private void Awake()
         {
-            GetComponent<Canvas>().worldCamera = Camera.main;
+        
         }
 
         /// <summary>

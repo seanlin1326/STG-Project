@@ -26,13 +26,13 @@ namespace Sean
         #region -- Unity Event Functions --
         private void Awake()
         {
-            if(TryGetComponent<Animator>(out Animator animator))
-            {
-                if (animator.isActiveAndEnabled)
-                {
-                    Destroy(this);
-                }
-            }
+            //if(TryGetComponent<Animator>(out Animator animator))
+            //{
+            //    if (animator.isActiveAndEnabled)
+            //    {
+            //        Destroy(this);
+            //    }
+            //}
             waitStayTime = new WaitForSeconds(EnemyManager.Instance.TimeBetweenWaves - animationTime * 2);
             lineTop.localPosition = lineTopStartPosition;
             lineBottom.localPosition = lineBottomStartPosition;

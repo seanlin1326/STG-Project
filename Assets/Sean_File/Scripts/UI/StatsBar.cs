@@ -17,12 +17,12 @@ namespace Sean
 
         Coroutine bufferedFillingCoroutine;
         
-        Canvas canvas;
+        [SerializeField]Canvas canvas;
         //float t;
         private void Awake()
         {
-            canvas = GetComponent<Canvas>();
-            canvas.worldCamera = Camera.main;
+            //canvas = GetComponent<Canvas>();
+            //canvas.worldCamera = Camera.main;
         }
         private void OnDisable()
         {
