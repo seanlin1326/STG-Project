@@ -2756,9 +2756,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 872993382}
     m_Modifications:
+    - target: {fileID: 1076719089186623308, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089186623308, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089186623308, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.060485724
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089186623308, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089186623308, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1076719089391459194, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
       propertyPath: m_Text
       value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089391459194, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089391459194, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089391459194, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719089391459194, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1076719090079423220, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2825,6 +2861,14 @@ PrefabInstance:
       value: 42.56
       objectReference: {fileID: 0}
     - target: {fileID: 1076719090079423221, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719090079423221, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719090079423221, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2875,6 +2919,22 @@ PrefabInstance:
     - target: {fileID: 1076719090079423222, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
       propertyPath: m_Name
       value: ResumeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719090079423227, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719090079423227, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719090079423227, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076719090079423227, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
