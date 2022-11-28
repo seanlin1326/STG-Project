@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace Sean
 {
     [CreateAssetMenu(fileName = "Player Input")]
-    public class PlayerInput : ScriptableObject, InputActions.IGamePlayActions
+    public class PlayerInput : ScriptableObject, InputActions.IGamePlayActions,InputActions.IPauseMenuActions
     {
         //Move
         public event UnityAction<Vector2> onMove;
@@ -16,28 +16,43 @@ namespace Sean
         public event UnityAction onStopFire;
         public event UnityAction onDodge;
         public event UnityAction onOverdrive;
+        public event UnityAction onPause;
+        public event UnityAction onUnpause;
         InputActions inputActions;
 
         private void OnEnable()
         {
             inputActions = new InputActions();
             inputActions.GamePlay.SetCallbacks(this);
+            inputActions.PauseMenu.SetCallbacks(this);
         }
         private void OnDisable()
         {
-
+            DisableAllInputs();
         }
-        public void DisableAllInputs()
+        void SwitchActionMap(InputActionMap actionMap,bool isUIInput)
         {
-            inputActions.GamePlay.Disable();
-        }
-        public void EnableGamePlayInput()
-        {
-            inputActions.GamePlay.Enable();
+            inputActions.Disable();
+            actionMap.Enable();
 
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (isUIInput)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
+        public void SwitchToDynamicUpdateMode() => InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
+        public void SwitchToFixedUpdateMode() => InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
+        public void DisableAllInputs()=>inputActions.Disable();
+        
+        public void EnableGamePlayInput() => SwitchActionMap(inputActions.GamePlay,false);
+        public void EnablePauseMenuInput() => SwitchActionMap(inputActions.PauseMenu,true);
+     
         public void OnMove(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -87,6 +102,22 @@ namespace Sean
             if (context.performed)
             {
                 onOverdrive.Invoke();
+            }
+        }
+
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                onPause.Invoke();
+            }
+        }
+
+        public void OnUnpause(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                onUnpause.Invoke();
             }
         }
     }
