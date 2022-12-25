@@ -11,21 +11,17 @@ namespace Sean
         [SerializeField] float defaultFadeTime = 3.5f;
         [SerializeField] CanvasGroup transitionImageCanvasGroup;
         const string GamePlaySceneName = "GamePlay";
+        const string MainMenuSceneName = "MainMenu";
         private void Load(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
         }
-        
-        public void LoadGamePlayScene()
-        {
-            StartCoroutine(LoadCoroutine(GamePlaySceneName,defaultFadeTime));
-        }
-        IEnumerator LoadCoroutine(string sceneName,float fadeTime)
+        IEnumerator LoadingCoroutine(string sceneName)
         {
             transitionImageCanvasGroup.alpha = 0;
             var loadingOperation= SceneManager.LoadSceneAsync(sceneName);
             loadingOperation.allowSceneActivation = false;
-            float alphaFadeInSpeed = 1 / fadeTime;
+            float alphaFadeInSpeed = 1 / defaultFadeTime;
             //fade out
             while (transitionImageCanvasGroup.alpha < 1f)
             {
@@ -34,7 +30,9 @@ namespace Sean
             }
             transitionImageCanvasGroup.alpha = 1;
             //load new scene
-         
+
+            yield return new WaitUntil(() => loadingOperation.progress >=0.9f);
+
             loadingOperation.allowSceneActivation = true;
             while (transitionImageCanvasGroup.alpha > 0f)
             {
@@ -42,8 +40,17 @@ namespace Sean
                 yield return null;
             }
             transitionImageCanvasGroup.alpha = 0;
-            //fade in 
-
+            //fade in
+        }
+        public void LoadGamePlayScene()
+        {
+            StopAllCoroutines();
+            StartCoroutine(LoadingCoroutine(GamePlaySceneName));
+        }
+        public void LoadMainMenuScene()
+        {
+            StopAllCoroutines();
+            StartCoroutine(LoadingCoroutine(MainMenuSceneName));
         }
     }
 }
