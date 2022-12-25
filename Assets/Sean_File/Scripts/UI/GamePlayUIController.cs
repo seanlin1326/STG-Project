@@ -9,6 +9,9 @@ namespace Sean
     {
         [Header("=== Player Input ===")]
         [SerializeField] PlayerInput playerInput;
+        [Header("=== Audio Data ===")]
+        [SerializeField] AudioData pauseSFX;
+        [SerializeField] AudioData unpauseSFX;
         [Header("=== Canvas ===")]
         [SerializeField] Canvas hudCanvas;
         [SerializeField] Canvas menusCanvas;
@@ -16,6 +19,8 @@ namespace Sean
         [SerializeField] Button resumeButton;
         [SerializeField] Button optionsButton;
         [SerializeField] Button mainMenuButton;
+
+        readonly private int buttonPressedParameterID = Animator.StringToHash("Pressed");
         private void OnEnable()
         {
             playerInput.onPause += Pause;
@@ -29,6 +34,8 @@ namespace Sean
         {
             playerInput.onPause -= Pause;
             playerInput.onUnpause -= Unpause;
+
+            ButtonPressedBehavior.buttonFunctionTable.Clear();
         }
         private void Pause()
         {
@@ -38,13 +45,15 @@ namespace Sean
             playerInput.EnablePauseMenuInput();
             playerInput.SwitchToDynamicUpdateMode();
             UIInput.Instance.SelectUI(resumeButton);
+            AudioManager.Instance.PlaySFX(pauseSFX);
         }
         public void Unpause()
         {
             resumeButton.Select();
-            resumeButton.animator.SetTrigger("Pressed");
+            resumeButton.animator.SetTrigger(buttonPressedParameterID);
+            AudioManager.Instance.PlaySFX(unpauseSFX);
         }
-        void OnResumeButtonClick()
+       private void OnResumeButtonClick()
         {
             Time.timeScale = 1f;
             hudCanvas.enabled = true;
@@ -52,13 +61,13 @@ namespace Sean
             playerInput.EnableGamePlayInput();
             playerInput.SwitchToFixedUpdateMode();
         }
-        void OnOptionsButtonClick()
+       private void OnOptionsButtonClick()
         {
             //TODO
             UIInput.Instance.SelectUI(optionsButton);
             playerInput.EnablePauseMenuInput();
         }
-        void OnMainMenuButtonClick()
+       private void OnMainMenuButtonClick()
         {
             menusCanvas.enabled = false;
             Time.timeScale = 1f;

@@ -728,6 +728,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 872993382}
     m_Modifications:
+    - target: {fileID: 241069100457817550, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: submitSFX.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ed01e6577d92d44eaa707cc45807023, type: 3}
     - target: {fileID: 1076719089391459194, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
       propertyPath: m_Text
       value: Options
@@ -2838,6 +2842,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: 6d12f230b1392944fa79079f18a16982, type: 2}
+  pauseSFX:
+    audioClip: {fileID: 8300000, guid: a15c02ca5c68f1b49acceb37b5fcf5dd, type: 3}
+    volume: 1
+  unpauseSFX:
+    audioClip: {fileID: 8300000, guid: f3d6c538a4a011f42a7a2bb965928f8e, type: 3}
+    volume: 1
   hudCanvas: {fileID: 237672631}
   menusCanvas: {fileID: 191575288}
   resumeButton: {fileID: 946883026}
@@ -3061,6 +3071,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 872993382}
     m_Modifications:
+    - target: {fileID: 241069100457817550, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
+      propertyPath: submitSFX.audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f3d6c538a4a011f42a7a2bb965928f8e, type: 3}
     - target: {fileID: 1076719089186623308, guid: 65564df358c8bcd47b797b783061dc2b, type: 3}
       propertyPath: m_Color.a
       value: 1

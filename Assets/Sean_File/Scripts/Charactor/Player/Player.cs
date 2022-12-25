@@ -280,7 +280,7 @@ namespace Sean
                 return;
             }
             PlayerOverdrive.on.Invoke();
-            Debug.Log("Haha");
+           
         }
         void OverdriveOn()
         {
