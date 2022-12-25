@@ -1837,7 +1837,9 @@ MonoBehaviour:
   - prefab: {fileID: 7653462834797500399, guid: 842fa19cfb2f5694bbca1f5bdcc04503, type: 3}
     size: 30
   - prefab: {fileID: 7653462834797500399, guid: 2d8ca3374c9a31948af1e7d6f54f4035, type: 3}
-    size: 30
+    size: 40
+  - prefab: {fileID: 2523096243714385163, guid: 1b2c3ab1e0e61914ba3e10d026ca3023, type: 3}
+    size: 3
   enemyProjectilePools:
   - prefab: {fileID: 9142271482941849166, guid: 4ebff4e1adcc4a843b6641b743fc4ee9, type: 3}
     size: 10
@@ -3024,11 +3026,6 @@ Transform:
   m_Father: {fileID: 575427416}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2088637587 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9099028392105970768, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-  m_PrefabInstance: {fileID: 3098575306416661074}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143447148
 GameObject:
   m_ObjectHideFlags: 0
@@ -3448,42 +3445,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5903643335194176133, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: triggerVFX
-      value: 
-      objectReference: {fileID: 3098575306416661076}
-    - target: {fileID: 5903643335194176133, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: onSFX.volume
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5903643335194176133, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: offSFX.volume
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5903643335194176133, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: onSFX.audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 62c5fc7ce12def64a84582fcf54974a1, type: 3}
-    - target: {fileID: 5903643335194176133, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: offSFX.audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: af7991e526977a144b102a04e5366c12, type: 3}
-    - target: {fileID: 5903643335194176133, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: engineVFXOverdrive
-      value: 
-      objectReference: {fileID: 3098575306416661075}
     - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
       propertyPath: statsBar_HUD
       value: 
       objectReference: {fileID: 4713528840570222130}
-    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: modelRenderer
-      value: 
-      objectReference: {fileID: 2088637587}
-    - target: {fileID: 6634290929158165658, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-      propertyPath: projectileOveride
-      value: 
-      objectReference: {fileID: 7653462834797500399, guid: 2d8ca3374c9a31948af1e7d6f54f4035, type: 3}
     - target: {fileID: 6709322897653869293, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
       propertyPath: energyBar
       value: 
@@ -3542,16 +3507,6 @@ PrefabInstance:
       objectReference: {fileID: 1681880691}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
---- !u!1 &3098575306416661075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3749571282202825356, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-  m_PrefabInstance: {fileID: 3098575306416661074}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3098575306416661076 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3327417886214402585, guid: d432f23d2ead36d47bc7b412f469f2f3, type: 3}
-  m_PrefabInstance: {fileID: 3098575306416661074}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4713528840570222130 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2389696667611042878, guid: 9bb744580d49ddf4c9b94b713b5379cd, type: 3}

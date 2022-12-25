@@ -6,7 +6,7 @@ namespace Sean
     public class PlayerProjectile : Projectile
     {
         TrailRenderer trail;
-        private void Awake()
+        protected virtual void Awake()
         {
             trail = GetComponentInChildren<TrailRenderer>();
             if (moveDirection != Vector2.right)

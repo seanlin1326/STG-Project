@@ -48,6 +48,7 @@ namespace Sean
         [SerializeField]float overDriveSpeedFactor = 1.2f;
         [SerializeField]float overDriveFireFactor = 1.2f;
 
+        private MissileSystem missile;
 
         float currentRoll;
         float dodgeDuration;
@@ -61,6 +62,7 @@ namespace Sean
         Coroutine healthGenerateCoroutine;
         private void Awake()
         {
+            missile = GetComponent<MissileSystem>();
             rigidbody = GetComponent<Rigidbody2D>();
             collider = GetComponent<Collider2D>();
             var size = modelRenderer.bounds.size;
@@ -78,6 +80,7 @@ namespace Sean
             input.onStopFire += StopFire;
             input.onDodge += Dodge;
             input.onOverdrive += OverDrive;
+            input.onLaunchMissile += LaunchMissile;
             PlayerOverdrive.on += OverdriveOn;
             PlayerOverdrive.off += OverdriveOff;
 
@@ -90,6 +93,7 @@ namespace Sean
             input.onStopFire -= StopFire;
             input.onDodge -= Dodge;
             input.onOverdrive -= OverDrive;
+            input.onLaunchMissile -= LaunchMissile;
             PlayerOverdrive.on -= OverdriveOn;
             PlayerOverdrive.off -= OverdriveOff;
 
@@ -295,6 +299,12 @@ namespace Sean
             isOverdriving = false;
             dodgeEnergyCost /= overDriveDodgeFactor;
             moveSpeed /= overDriveSpeedFactor;
+        }
+        #endregion
+        #region -- LaunchMissile --
+        void LaunchMissile()
+        {
+            missile.Launch(muzzleMiddle);
         }
         #endregion
     }

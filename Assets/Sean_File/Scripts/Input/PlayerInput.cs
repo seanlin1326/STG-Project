@@ -18,6 +18,7 @@ namespace Sean
         public event UnityAction onOverdrive;
         public event UnityAction onPause;
         public event UnityAction onUnpause;
+        public event UnityAction onLaunchMissile;
         InputActions inputActions;
 
         private void OnEnable()
@@ -118,6 +119,14 @@ namespace Sean
             if (context.performed)
             {
                 onUnpause.Invoke();
+            }
+        }
+
+        public void OnLaunchMissile(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                onLaunchMissile.Invoke();
             }
         }
     }
