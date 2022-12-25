@@ -21,18 +21,14 @@ namespace Sean
             playerInput.onPause += Pause;
             playerInput.onUnpause += Unpause;
 
-            resumeButton.onClick.AddListener(OnResumeButtonClick);
-            optionsButton.onClick.AddListener(OnOptionsButtonClick);
-            mainMenuButton.onClick.AddListener(OnMainMenuButtonClick);
+            ButtonPressedBehavior.buttonFunctionTable.Add(resumeButton.gameObject.name,OnResumeButtonClick);
+            ButtonPressedBehavior.buttonFunctionTable.Add(optionsButton.gameObject.name,OnOptionsButtonClick);
+            ButtonPressedBehavior.buttonFunctionTable.Add(mainMenuButton.gameObject.name, OnMainMenuButtonClick);
         }
         private void OnDisable()
         {
             playerInput.onPause -= Pause;
             playerInput.onUnpause -= Unpause;
-
-            resumeButton.onClick.RemoveAllListeners();
-            optionsButton.onClick.RemoveAllListeners();
-            mainMenuButton.onClick.RemoveAllListeners();
         }
         private void Pause()
         {
@@ -41,10 +37,12 @@ namespace Sean
             menusCanvas.enabled = true;
             playerInput.EnablePauseMenuInput();
             playerInput.SwitchToDynamicUpdateMode();
+            UIInput.Instance.SelectUI(resumeButton);
         }
         public void Unpause()
         {
-            OnResumeButtonClick();
+            resumeButton.Select();
+            resumeButton.animator.SetTrigger("Pressed");
         }
         void OnResumeButtonClick()
         {
@@ -57,6 +55,8 @@ namespace Sean
         void OnOptionsButtonClick()
         {
             //TODO
+            UIInput.Instance.SelectUI(optionsButton);
+            playerInput.EnablePauseMenuInput();
         }
         void OnMainMenuButtonClick()
         {

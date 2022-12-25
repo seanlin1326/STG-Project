@@ -33,7 +33,7 @@ namespace Sean
 
             while (spawnEnemy)
             {
-                yield return new WaitUntil(() => enemyList.Count == 0);
+              
 
                 waveUIController.OpenOrCloseWaveUI(true);
                 yield return new WaitForSeconds(timeBetweenWaves);
@@ -52,7 +52,7 @@ namespace Sean
                     enemyList.Add(PoolManager.Release(_enemy,defaultEnemySpawnPoint.position));
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }
-            
+            yield return new WaitUntil(() => enemyList.Count == 0);
             waveNumber++;
            
         }
