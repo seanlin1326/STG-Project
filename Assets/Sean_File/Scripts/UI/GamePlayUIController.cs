@@ -39,7 +39,8 @@ namespace Sean
         }
         private void Pause()
         {
-            Time.timeScale = 0f;
+            GameManager.CurrentGameState = GameState.Paused;
+            TimeController.Instance.Pause();
             hudCanvas.enabled = false;
             menusCanvas.enabled = true;
             playerInput.EnablePauseMenuInput();
@@ -55,7 +56,8 @@ namespace Sean
         }
        private void OnResumeButtonClick()
         {
-            Time.timeScale = 1f;
+            GameManager.CurrentGameState = GameState.Playing;
+            TimeController.Instance.Unpause();
             hudCanvas.enabled = true;
             menusCanvas.enabled = false;
             playerInput.EnableGamePlayInput();
@@ -70,6 +72,7 @@ namespace Sean
        private void OnMainMenuButtonClick()
         {
             menusCanvas.enabled = false;
+            GameManager.CurrentGameState = GameState.Playing;
             Time.timeScale = 1f;
             //Load Main Menu Scene
             SceneLoader.Instance.LoadMainMenuScene();

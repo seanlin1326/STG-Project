@@ -12,15 +12,15 @@ namespace Sean
             material = GetComponent<Renderer>().material;
         }
         // Start is called before the first frame update
-        void Start()
-        {
-
-        }
+      
 
         // Update is called once per frame
         void Update()
         {
-            material.mainTextureOffset += scrollVelocity * Time.deltaTime;
+            if (GameManager.CurrentGameState == GameState.Playing)
+            {
+                material.mainTextureOffset += scrollVelocity * Time.deltaTime;
+            }
         }
     }
 }

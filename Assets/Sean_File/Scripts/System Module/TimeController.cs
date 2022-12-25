@@ -8,10 +8,27 @@ namespace Sean
         [SerializeField, Range(0f, 1f)] float bulletTimeScale = 0.1f;
         float defaultFixedDeltaTime;
 
+        float timeScaleBeforePause=1;
+
+   
         protected override void Awake()
         {
             base.Awake();
             defaultFixedDeltaTime = Time.fixedDeltaTime;
+            timeScaleBeforePause = Time.timeScale;
+        }
+
+        public void Pause()
+        {
+            timeScaleBeforePause = Time.timeScale;
+            Time.timeScale = 0f;
+           
+        }
+
+        public void Unpause()
+        {
+            Time.timeScale = timeScaleBeforePause;
+           
         }
         public void BulletTime(float duration)
         {
@@ -52,9 +69,12 @@ namespace Sean
             float t = 0f;
             while (t < 1f)
             {
+                if (GameManager.CurrentGameState!=GameState.Paused)
+                {
                 t += Time.unscaledDeltaTime / duration;
                 Time.timeScale = Mathf.Lerp(1f,bulletTimeScale,t);
                 Time.fixedDeltaTime = defaultFixedDeltaTime * Time.timeScale;
+                }
                 yield return null;
             }
             //Debug.Log($"Slow Out Duration:{Time.unscaledTime - startTime}");
@@ -65,9 +85,12 @@ namespace Sean
             float t = 0f;
             while (t < 1f)
             {
+                if (GameManager.CurrentGameState != GameState.Paused)
+                {
                 t += Time.unscaledDeltaTime / duration;
                 Time.timeScale = Mathf.Lerp(bulletTimeScale,1f,t);
                 Time.fixedDeltaTime = defaultFixedDeltaTime * Time.timeScale;
+                }
                 yield return null;
             }
             //Debug.Log($"Slow Out Duration:{Time.unscaledTime - startTime}");

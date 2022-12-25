@@ -60,6 +60,10 @@ namespace Sean
             while (gameObject.activeSelf)
             {
                 yield return new WaitForSeconds(Random.Range(minFireInterval,maxFireInterval));
+                if(GameManager.CurrentGameState == GameState.GameOver)
+                {
+                    yield break;
+                }
                 foreach (var _projectile in projectiles)
                 {
                     PoolManager.Release(_projectile, muzzle.position);

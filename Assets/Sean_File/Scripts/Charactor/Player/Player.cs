@@ -125,6 +125,7 @@ namespace Sean
         }
         public override void Die()
         {
+            GameManager.CurrentGameState = GameState.GameOver;
             statsBar_HUD.UpdateStats(0, maxHealth);
             base.Die();
         }

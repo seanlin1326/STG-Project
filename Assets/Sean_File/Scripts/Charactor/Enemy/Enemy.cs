@@ -14,5 +14,13 @@ namespace Sean
             EnemyManager.Instance.RemoveFromList(gameObject);
             base.Die();
         }
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if(other.gameObject.TryGetComponent<Player>(out Player player))
+            {
+                player.Die();
+                Die();
+            }
+        }
     }
 }
