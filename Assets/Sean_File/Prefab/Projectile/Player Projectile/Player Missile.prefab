@@ -4939,6 +4939,15 @@ MonoBehaviour:
   lowSpeed: 8
   highSpeed: 35
   variableSpeedDelay: 0.5
+  explosionVFX: {fileID: 7203458116342931450, guid: 975f9549f84dd594a84456abeb05e287, type: 3}
+  explosionSFX:
+    audioClip: {fileID: 8300000, guid: 133384b18e980ad46b1b8ddaa55ea7a2, type: 3}
+    volume: 0.5
+  explosionRadius: 3
+  explosionDamage: 100
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &10055776
 MonoBehaviour:
   m_ObjectHideFlags: 0
