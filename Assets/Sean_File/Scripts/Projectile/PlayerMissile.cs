@@ -37,16 +37,7 @@ namespace Sean
             PoolManager.Release(explosionVFX, transform.position);
             //Play explosion SFX
             AudioManager.Instance.PlayRandomSFX(explosionSFX);
-            //Enemies in explosion take AOE damage
-            var colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayerMask);
-
-            foreach (var collider in colliders)
-            {
-                if(collider.TryGetComponent<Enemy>(out Enemy enemy))
-                {
-                    enemy.TakeDamage(explosionDamage);
-                }
-            }
+       
         }
         private void OnDrawGizmosSelected()
         {
