@@ -16,7 +16,7 @@ namespace Sean
             UIInputModule = GetComponent<InputSystemUIInputModule>();
             UIInputModule.enabled = false;
         }
-        public void SelectUI(Selectable UIObject)
+        public void  SelectUI(Selectable UIObject)
         {
             UIObject.Select();
             UIObject.OnSelect(null);
