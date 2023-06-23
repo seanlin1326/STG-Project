@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 namespace Sean
 {
 
@@ -12,6 +13,8 @@ namespace Sean
     }
     public class GameManager : PersistenSingleton<GameManager>
     {
+        public static Action onGameOver;
+
         [SerializeField] private GameState gameState = GameState.Playing;
       public static GameState CurrentGameState
         {

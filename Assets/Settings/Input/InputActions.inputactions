@@ -336,6 +336,66 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "GameOverScreen",
+            "id": "0f6bc12f-d3e5-4afb-8204-9b0352e6e312",
+            "actions": [
+                {
+                    "name": "ConfirmGameOver",
+                    "type": "Button",
+                    "id": "a22e16c0-21e8-4126-838a-8dec17635688",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3fc93e0f-264c-416a-ba54-2c469ad0487d",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ConfirmGameOver",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42959747-f9be-438f-9bfc-416051ba68eb",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ConfirmGameOver",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33207f21-c068-4867-8043-4566a290de51",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ConfirmGameOver",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc34f1d1-cf99-4044-a67c-4b8d7c63b82d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ConfirmGameOver",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

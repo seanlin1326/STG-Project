@@ -6,7 +6,10 @@ using UnityEngine.InputSystem;
 namespace Sean
 {
     [CreateAssetMenu(fileName = "Player Input")]
-    public class PlayerInput : ScriptableObject, InputActions.IGamePlayActions,InputActions.IPauseMenuActions
+    public class PlayerInput : ScriptableObject,
+                               InputActions.IGamePlayActions,
+                               InputActions.IPauseMenuActions,
+                               InputActions.IGameOverScreenActions                  
     {
         //Move
         public event UnityAction<Vector2> onMove;
@@ -19,6 +22,8 @@ namespace Sean
         public event UnityAction onPause;
         public event UnityAction onUnpause;
         public event UnityAction onLaunchMissile;
+
+        public event UnityAction onConfirmGameOver;
         InputActions inputActions;
 
         private void OnEnable()
@@ -26,6 +31,7 @@ namespace Sean
             inputActions = new InputActions();
             inputActions.GamePlay.SetCallbacks(this);
             inputActions.PauseMenu.SetCallbacks(this);
+            inputActions.GameOverScreen.SetCallbacks(this);
         }
         private void OnDisable()
         {
@@ -53,6 +59,8 @@ namespace Sean
         
         public void EnableGamePlayInput() => SwitchActionMap(inputActions.GamePlay,false);
         public void EnablePauseMenuInput() => SwitchActionMap(inputActions.PauseMenu,true);
+
+        public void EnableGameOverScreenInput() => SwitchActionMap(inputActions.GameOverScreen,false);
      
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -127,6 +135,14 @@ namespace Sean
             if (context.performed)
             {
                 onLaunchMissile.Invoke();
+            }
+        }
+
+        public void OnConfirmGameOver(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                onConfirmGameOver.Invoke();
             }
         }
     }
