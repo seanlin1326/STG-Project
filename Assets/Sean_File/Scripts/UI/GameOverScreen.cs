@@ -53,7 +53,7 @@ namespace Sean
             AudioManager.Instance.PlaySFX(confirmGameOverSound);
             input.DisableAllInputs();
             animator.Play(exitStateID);
-            SceneLoader.Instance.LoadMainMenuScene(); //Todo
+            SceneLoader.Instance.LoadScoringScene(); 
 
         }
 

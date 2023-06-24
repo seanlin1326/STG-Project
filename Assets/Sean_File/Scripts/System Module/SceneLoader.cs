@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Sean
         [SerializeField] CanvasGroup transitionImageCanvasGroup;
         const string GamePlaySceneName = "GamePlay";
         const string MainMenuSceneName = "MainMenu";
+        const string ScoringSceneName = "Scoring";
         private void Load(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
@@ -51,6 +53,11 @@ namespace Sean
         {
             StopAllCoroutines();
             StartCoroutine(LoadingCoroutine(MainMenuSceneName));
+        }
+        public void LoadScoringScene()
+        {
+            StopAllCoroutines();
+            StartCoroutine(LoadingCoroutine(ScoringSceneName));
         }
     }
 }

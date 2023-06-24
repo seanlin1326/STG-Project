@@ -5,6 +5,7 @@ namespace Sean
 {
     public class ScoreManager : PersistenSingleton<ScoreManager>
     {
+        public int Score => score;
         int score;
         int currentScore;
         Vector3 scoreTextScale = new Vector3(1.2f, 1.2f, 1f);

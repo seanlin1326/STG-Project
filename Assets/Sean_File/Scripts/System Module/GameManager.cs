@@ -10,6 +10,7 @@ namespace Sean
         Playing,
         Paused,
         GameOver,
+        Scoring
     }
     public class GameManager : PersistenSingleton<GameManager>
     {
